@@ -5,11 +5,6 @@ pipeline{
         maven 'maven'
     }
     stages{
-        stage("Maven version"){
-            steps{
-                sh "mvn --version"
-            }
-        }
         stage("Build"){
             steps{
                 sh "mvn clean install"
