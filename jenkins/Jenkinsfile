@@ -10,5 +10,12 @@ pipeline{
                 sh "mvn clean install"
             }
         }
+        stage("build & SonarQube analysis") {
+          node {
+              withSonarQubeEnv(installationName: "sonar-9" credentialsId: "sonarqube") {
+                 sh 'mvn clean package sonar:sonar'
+              }
+          }
+      }
     }
 }
